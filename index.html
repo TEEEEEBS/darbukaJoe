@@ -1,26 +1,16 @@
+<meta charset="UTF-8">
 <html>
     <head>
-        <meta charset="utf-8"/>
         <link rel="stylesheet" href="style.css">
-        <script src="index.js"></script>
+        <script src="js/audio.js"></script>
+        <script src="js/player.js"></script>
+        <script src="js/main.js"></script>
+        
     </head>
-    <body style="margin:0">
-        <div id="rhythmWrapper">
-            <div id="rhythmHeader">1e&a2e&a3e&a4e&a</div>
-            <form>
-                <input type="text" id="rhythmInput" value="----------------">
-                <br/>
-                <label class="switch">
-                    <input id="toggle" type="checkbox" />
-                    <span class="slider round"></span>
-                </label>
-            </form>
-        </div>
-        <div>
-            <form>
-                BPM
-                <input type="text" id="bpmInput" value="100">
-            </form>
+    <body>
+        <div id="outer-wrapper">
+            <div id="player-wrapper">
+            </div>
         </div>
     </body>
 </html>
