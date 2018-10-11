@@ -6,11 +6,15 @@ var subBeats = 4;
 var step = 0;
 var bpm = 80;
 var rhythm = "----------------";
+
 /*
 Initialize stuff
 */
 window.onload = function () {
     generatePlayer(beats, subBeats);
+    
+    // Create event listeners
+    document.querySelector("#player-wrapper").addEventListener("click", handlePlayerClick, false);
 }
 
 /*
@@ -76,7 +80,8 @@ function generatePlayer(beats, subBeats) {
                 default:
                     subHeader.innerHTML="X";
             }
-            subBody.innerHTML="T";
+            subBody.innerHTML = "-";
+            //subBody.id = "sub-body-" + (i*4 + j); // Not sure ids are needed here...
             subBeat.appendChild(subHeader);
             subBeat.appendChild(subBody);
             beat.appendChild(subBeat);
@@ -128,4 +133,27 @@ function playStroke(input) {
     console.log("i should be playing " + stroke);
     osc.start(audioContext.currentTime);
     osc.stop(audioContext.currentTime + .2);
+}
+
+// Stolen from:
+// https://www.kirupa.com/html5/handling_events_for_many_elements.htm
+function handlePlayerClick(e) {
+    if (e.target.className === "sub-body") {
+        changeCharacter(e.target);
+    }
+}
+
+function changeCharacter(element) {
+    var validChars = "DTK-";
+    var flag = 0
+    for (var i=0; i < validChars.length; i++) {
+        if ((validChars.charAt(i) === element.innerText) && (!flag)) {
+            element.innerHTML = validChars.charAt((i + 1) % validChars.length);
+            flag = 1;
+        } else {
+            console.log("HEY");
+        }
+    }
+    
+    //element.innerHTML= "!";
 }
